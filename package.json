@@ -1,0 +1,26 @@
+{
+  "name": "nanogptjs",
+  "version": "1.0.0",
+  "description": "Interact with NanoGPT's API for pay-per-prompt interaction with AI models",
+  "main": "nanogptjs.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "nano",
+    "nanocurrency",
+    "ai",
+    "chatgpt",
+    "gpt",
+    "claude",
+    "gemini",
+    "llama",
+    "dall-e",
+    "flux",
+    "stablediffusion",
+    "LLM",
+    "nanogpt"
+  ],
+  "author": "Frank Kilkelly",
+  "license": "MIT"
+}

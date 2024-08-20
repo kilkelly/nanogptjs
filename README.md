@@ -23,7 +23,7 @@ const { YOUR_NANO_GPT_API_KEY } = require('./secrets.js')
   let { reply } = await nanogpt.chat('Tell me something about Nano digital currency?')  
 
   console.log(reply) // Nano is a feeless and instant cryptocurrency.
-}
+})()
 
 ```
 

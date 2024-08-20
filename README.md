@@ -151,7 +151,7 @@ Generates a specific number of  images.
 
 ```js
 let imageBatch = await nanogpt.imageBatch({
-  batchSize: 2
+  batchSize: 2,
   prompt: 'a beautiful landscape with a large cat',
   model: 'dreamshaper_8_93211.safetensors',
   width: 1024,

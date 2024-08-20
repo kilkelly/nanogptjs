@@ -41,7 +41,7 @@ module.exports = function ({
       let response
       let prompt = ''
       let model
-      let context = []
+      let context
 
       // if params are a single string then this is the prompt shorthand version of this function
       if (isString(params)) {
@@ -49,7 +49,7 @@ module.exports = function ({
       } else if (isObject(params)) {
         prompt = params.prompt
         model = params.model
-        context = params.context
+        context = params.context || []
       } else {
         throw new Error(ERROR_PREFIX + ERROR_INCORRECT_PARAMETERS)
       }

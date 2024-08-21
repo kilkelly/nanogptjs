@@ -41,7 +41,7 @@ module.exports = function ({
       let response
       let prompt = ''
       let model
-      let context
+      let context = []
 
       // if params are a single string then this is the prompt shorthand version of this function
       if (isString(params)) {

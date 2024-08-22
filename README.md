@@ -220,7 +220,7 @@ Returns a Number
 4.0678
 ```
 
-### account()
+### models()
 
 Retrieves information about the models available on NanoGPT.
 

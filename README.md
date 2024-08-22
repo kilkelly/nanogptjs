@@ -318,6 +318,10 @@ Returns an Object with the following format:
 }
 ```
 
+## Examples
+
+You can find multiple NanoGPTJS usage examples in the [examples](https://github.com/kilkelly/nanogptjs/tree/main/examples) folder.
+
 ## Feedback
 
 Pull requests and opened issues are welcome!

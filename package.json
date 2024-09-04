@@ -2,9 +2,15 @@
   "name": "nanogptjs",
   "version": "1.0.0",
   "description": "Interact with NanoGPT's API for pay-per-prompt interaction with AI models",
-  "main": "nanogptjs.js",
+  "exports": {
+    "import": "./dist/nanogptjs.mjs",
+    "require": "./dist/nanogptjs.cjs"
+  },
   "engines": {
     "node": ">=18"
+  },
+  "scripts": {
+    "build": "node build"
   },
   "repository": {
     "type": "git",
@@ -12,7 +18,7 @@
   },
   "bugs": {
     "url": "https://github.com/kilkelly/nanogptjs/issues"
-  },  
+  },
   "keywords": [
     "nano",
     "nanocurrency",

@@ -68,9 +68,10 @@ Returns a Promise that resolves to an Object with the following format:
 {
   reply: "Nano is a feeless and instant cryptocurrency.", // the reply to your chat prompt
   metadata: {
-    nanoCost: 0.001089, // the Nano cost of this interaction
-    inputTokens: 24, // the number of tokens your input created
-    outputTokens: 21 // the number of tokens your output created
+    cost: 0.001089, // cost of this interaction
+    paymentSource: 'XNO', // currency used for payment
+    inputTokens: 24, // number of tokens your input created
+    outputTokens: 21 // number of tokens your output created
   }
 }
 ```
@@ -102,9 +103,10 @@ Returns a Promise that resolves to an Object with the following format:
 {
   reply: "Based on prior informations, I think blue is your favorite color!", // the reply to your chat prompt
   metadata: {
-    nanoCost: 0.001089, // the Nano cost of this interaction
-    inputTokens: 24, // the number of tokens your input created
-    outputTokens: 21 // the number of tokens your output created
+    cost: 0.001089, // cost of this interaction
+    paymentSource: 'XNO', // currency used for payment
+    inputTokens: 24, // number of tokens your input created
+    outputTokens: 21 // number of tokens your output created
   }
 }
 ```
@@ -139,8 +141,8 @@ Returns a Promise that resolves to an Object with the following format:
   base64: " /9j/4AAQSkZJRgABAQAAAQABAAD...", // base64 encoded version of your generated image
   metadata: {
     created: 1723814389930, // timestamp of this image generation
-    nanoCost: 0.0021, // the Nano cost of this interaction
-    remainingBalance: 0.10210999999999999 // your remaining NanoGPT balance
+    cost: 0.0021, // cost of this interaction
+    paymentSource: 'XNO' // currency used for payment
   }
 }
 ```
@@ -181,9 +183,9 @@ Returns a Promise that resolves to an Object with the following format:
     base64: " /9j/4AAQSkZJRgABAQAAAQAABAB...", // base64 encoded version of your generated image  
   ]
   metadata: {
-    created: 1723815073228,
-    nanoCost: 0.00501,
-    remainingBalance: 0.13908
+    created: 1723815073228, // timestamp of this image generation
+    cost: 0.00501, // cost of this interaction
+    paymentSource: 'XNO' // currency used for payment
   }
 }
 ```

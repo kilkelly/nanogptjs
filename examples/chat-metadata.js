@@ -14,7 +14,7 @@ const nanogptjs = require('nanogptjs')
 
   let { metadata } = await nanogpt.chat('Tell me something about Nano digital currency')  
 
-  console.log('Nano cost:', metadata.nanoCost)
+  console.log('Nano cost:', metadata.cost)
   console.log('Number of input tokens:', metadata.inputTokens)
   console.log('Number of output tokens:', metadata.outputTokens)
 })()

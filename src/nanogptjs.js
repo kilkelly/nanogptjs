@@ -138,19 +138,8 @@ module.exports = function ({
           NANOGPT_API_GENERATE_IMAGE,
           Object.assign(requestTemplate,
             {
-              body: JSON.stringify({
-                prompt: _params.prompt,
-                model: _params.model,
-                width: _params.width,
-                height: _params.height,
-                negative_prompt: _params.negativePrompt,
-                num_steps: _params.steps,
-                resolution: _params.resolution,
-                sampler_name: _params.sampler,
-                scale: _params.scale,
-                nImages: 1
-              })
-            }
+              body: JSON.stringify(_params)
+            }        
           )
         )    
 
@@ -198,25 +187,14 @@ module.exports = function ({
       }
 
       // -----
-
+      
       try {
     
         response = await fetch(
           NANOGPT_API_GENERATE_IMAGE,
           Object.assign(requestTemplate,
             {
-              body: JSON.stringify({
-                prompt: _params.prompt,
-                model: _params.model,
-                width: _params.width,
-                height: _params.height,
-                negative_prompt: _params.negativePrompt,
-                num_steps: _params.steps,
-                resolution: _params.resolution,
-                sampler_name: _params.sampler,
-                scale: _params.scale,
-                nImages: _params.batchSize
-              })              
+              body: JSON.stringify(_params)              
             }
           )
         )
@@ -328,12 +306,12 @@ function handleImageGenerationParams(params, defaultModel) {
       model: defaultModel,
       width: IMAGE_WIDTH,
       height: IMAGE_HEIGHT,
-      negativePrompt: '',
-      steps: IMAGE_NUM_STEPS,
-      sampler: IMAGE_SAMPLER_NAME,
+      negative_prompt: '',
+      num_steps: IMAGE_NUM_STEPS,
+      sampler_name: IMAGE_SAMPLER_NAME,
       scale: IMAGE_SCALE,
       resolution: `${IMAGE_WIDTH}x${IMAGE_HEIGHT}`,
-      batchSize: 1
+      nImages: 1
     }
     
   }
@@ -344,13 +322,17 @@ function handleImageGenerationParams(params, defaultModel) {
       model: params.model || defaultModel,
       width: params.width || IMAGE_WIDTH,
       height: params.height || IMAGE_HEIGHT,
-      negativePrompt: params.negativePrompt || '',
-      steps: params.steps || IMAGE_NUM_STEPS,
-      sampler: params.sampler || IMAGE_SAMPLER_NAME,
+      negative_prompt: params.negativePrompt || '',
+      num_steps: params.steps || IMAGE_NUM_STEPS,
+      sampler_name: params.sampler || IMAGE_SAMPLER_NAME,
       scale: params.scale || IMAGE_SCALE,
-      batchSize: params.batchSize || 1
+      nImages: params.batchSize || 1
     }
-    _params.resolution = `${_params.width}x${_params.width}`
+    _params.resolution = `${_params.width}x${_params.height}`
+
+    if (isObject(params.paramsExtra)) {
+      _params = Object.assign({}, _params, params.paramsExtra)
+    }
 
   } else {
     throw new Error(ERROR_PREFIX + ERROR_INCORRECT_PARAMETERS)
@@ -368,19 +350,19 @@ function handleImageGenerationParams(params, defaultModel) {
   if (!isIntegerGreaterThanZero(_params.height)) {
     throw new Error(ERROR_PREFIX + 'Image height must be an integer greater than zero')
   }  
-  if (!isString(_params.negativePrompt)) {
+  if (!isString(_params.negative_prompt)) {
     throw new Error(ERROR_PREFIX + 'Negative prompt must be a string')
   }
-  if (!isIntegerGreaterThanZero(_params.steps)) {
+  if (!isIntegerGreaterThanZero(_params.num_steps)) {
     throw new Error(ERROR_PREFIX + 'Number of steps must be an integer greater than zero')
   }      
-  if (!isString(_params.sampler)) {
+  if (!isString(_params.sampler_name)) {
     throw new Error(ERROR_PREFIX + 'Sampler name must be a string')
   }
   if (!isNumber(_params.scale)) {
     throw new Error(ERROR_PREFIX + 'Scale must be a number')
   }
-  if (!isIntegerGreaterThanZero(_params.batchSize)) {
+  if (!isIntegerGreaterThanZero(_params.nImages)) {
     throw new Error(ERROR_PREFIX + 'Number of images must be an integer greater than zero')
   }      
 

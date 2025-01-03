@@ -1,6 +1,6 @@
 {
   "name": "nanogptjs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Interact with NanoGPT's API for pay-per-prompt interaction with AI models",
   "exports": {
     "import": "./dist/nanogptjs.mjs",

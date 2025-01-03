@@ -34,6 +34,10 @@ module.exports = function ({
     throw new Error(ERROR_PREFIX + 'NanoGPT API key not provided')
   }
 
+  if (!isString(apiKey)) {
+    throw new Error(ERROR_PREFIX + 'NanoGPT API key must be a string')
+  }  
+
   return {
 
     chat: async function (params) {
